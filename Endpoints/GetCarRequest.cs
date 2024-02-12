@@ -1,6 +1,6 @@
 namespace TemplateLinq2DbFastEndpoints.Endpoints;
 
-public sealed class CarRequest
+public sealed class GetCarRequest
 {
     public Guid Id { get; set; }
 }
