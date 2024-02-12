@@ -3,6 +3,7 @@ using FluentMigrator.Runner;
 using FluentMigrator.Runner.VersionTableInfo;
 using LinqToDB;
 using LinqToDB.AspNet;
+using LinqToDB.DataProvider.PostgreSQL;
 using LinqToDB.Mapping;
 using LinqToDB.Metadata;
 using TemplateLinq2DbFastEndpoints.Database;
@@ -18,7 +19,7 @@ public static class ConfigureServices
 
         var dataOptions = new DataOptions()
             .UseMappingSchema(ms)
-            .UseConnectionString(connectionString);
+            .UseConnectionString(PostgreSQLTools.GetDataProvider(connectionString: connectionString), connectionString);
 
         services.AddLinqToDBContext<IDbContext, DbContext>((_, _) => dataOptions);
         

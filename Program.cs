@@ -1,3 +1,4 @@
+using FastEndpoints;
 using FluentMigrator.Runner;
 using TemplateLinq2DbFastEndpoints;
 
@@ -6,6 +7,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // AddDatabaseServices is extension method in ConfigureServices.cs
 builder.Services.AddDatabaseServices(connectionString);
+
+builder.Services.AddFastEndpoints();
 
 var app = builder.Build();
 
@@ -17,5 +20,13 @@ migrationRunner.MigrateUp();
 // Most basic "minimal api". https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api.
 // See Endpoints folder for endpoints using the FastEndpoints library (also uses minimal api under the hood).
 app.MapGet("/", () => "Hello World!");
+
+app.UseFastEndpoints(config =>
+{
+    config.Endpoints.Configurator = ep =>
+    {
+        ep.AllowAnonymous();
+    };
+});
 
 app.Run();

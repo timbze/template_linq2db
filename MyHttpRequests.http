@@ -1,0 +1,33 @@
+# Create car 1
+POST http://localhost:5056/cars
+Content-Type: application/json
+
+{
+  "id": "28379b38-d283-4e02-b02e-14cee17b17b3",
+  "make": "Chevy",
+  "model": "Cruze"
+}
+
+###
+
+# Create car 2
+POST http://localhost:5056/cars
+Content-Type: application/json
+
+{
+  "id": "72827045-939b-4d1b-b76a-cb8dc1bdb1ab",
+  "make": "Ford",
+  "model": "Ranger"
+}
+
+###
+
+# Get car 1
+GET http://localhost:5056/cars/28379b38-d283-4e02-b02e-14cee17b17b3
+Accept: application/json
+
+###
+
+# Get car list
+GET http://localhost:5056/cars
+Accept: application/json
